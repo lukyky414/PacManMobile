@@ -9,7 +9,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "PacMan";
 		config.width = 28 * 16;
-		config.height = 29 * 16;
+		config.height = 31 * 16;
 		new LwjglApplication(new PacManGdx(), config);
 	}
 }
