@@ -2,12 +2,14 @@ package com.gdx.game.model;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.gdx.game.view.TextureFactory;
 
 public class Maze {
-	Texture block;
+	Texture block=TextureFactory.getInstance().getTextureBloc();
 	Texture pacGomme;
 	Texture pacPower;
 	Texture dark;
+	Texture pacman = TextureFactory.getInstance().getTexturePacman();
 	
 	int openMaze[][] = {
 			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -27,7 +29,7 @@ public class Maze {
 			{2,2,2,2,2,2,2,2,2,2,0,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2,2,2},
 			{0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0},
 			{0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0,0,0,2,0,0,2,0,0,0,0,0,0},
-			{0,0,0,0,0,0,2,0,0,2,2,2,2,2,2,2,2,2,2,0,0,2,0,0,0,0,0,0},
+			{0,0,0,0,0,0,2,0,0,2,2,2,2,2,4,2,2,2,2,0,0,2,0,0,0,0,0,0},
 			{0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0},
 			{0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0},
 			{0,2,2,2,2,2,2,2,2,2,2,2,2,0,0,2,2,2,2,2,2,2,2,2,2,2,2,0},
@@ -44,7 +46,7 @@ public class Maze {
 	};
 	
 	public Maze(Texture Block, Texture PacGomme, Texture PacPower, Texture Dark) {
-		block = Block;
+		//block = Block;
 		pacGomme = PacGomme;
 		pacPower = PacPower;
 		dark = Dark;
@@ -56,6 +58,7 @@ public class Maze {
 		draw(batch, dark, 1);
 		draw(batch, pacGomme, 2);
 		draw(batch, pacPower, 3);
+		draw(batch, pacman, 4);
 		
 	}
 	

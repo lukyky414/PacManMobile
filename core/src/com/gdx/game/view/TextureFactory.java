@@ -13,8 +13,8 @@ public class TextureFactory
 
     private TextureFactory()
     {
-        pacman = new Texture(Gdx.files.internal("data/pacmanRight.png"));
-        bloc = new Texture(Gdx.files.internal("data/bloc.png"));
+        pacman = new Texture(Gdx.files.internal("pacmanRight.png"));
+        bloc = new Texture(Gdx.files.internal("bloc.png"));
     }
 
     private static TextureFactory instance = null;
