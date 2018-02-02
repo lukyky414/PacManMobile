@@ -22,7 +22,8 @@ public class PacManGdx extends ApplicationAdapter {
 		pacGomme = new Texture("pellet.png");
 		pacPower = new Texture("superpellet.png");
 		dark = new Texture("dark.png");
-		wut = new Maze(block, pacGomme, pacPower, dark);
+		//wut = new Maze(block, pacGomme, pacPower, dark);
+		wut = new Maze();
 	}
 
 	@Override

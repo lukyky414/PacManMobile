@@ -9,12 +9,15 @@ import java.util.HashMap;
 
 public class TextureFactory
 {
-    private Texture pacman, bloc;
+    private Texture pacman, bloc, pacGom, pacPower, dark;
 
     private TextureFactory()
     {
         pacman = new Texture(Gdx.files.internal("pacmanRight.png"));
         bloc = new Texture(Gdx.files.internal("bloc.png"));
+        pacGom = new Texture(Gdx.files.internal("pellet.png"));
+        pacPower = new Texture(Gdx.files.internal("superpellet.png"));
+        dark = new Texture(Gdx.files.internal("dark.png"));
     }
 
     private static TextureFactory instance = null;
@@ -37,6 +40,18 @@ public class TextureFactory
     public Texture getTextureBloc()
     {
         return bloc;
+    }
+
+    public Texture getTexturePacGom() {
+        return pacGom;
+    }
+
+    public Texture getTexturePacPower() {
+        return pacPower;
+    }
+
+    public Texture getTextureDark() {
+        return dark;
     }
 
     public Texture getTexture(Class<? extends GameElement> aClass) {
