@@ -6,9 +6,9 @@ import com.gdx.game.view.TextureFactory;
 
 public class Maze {
 	Texture block=TextureFactory.getInstance().getTextureBloc();
-	Texture pacGomme;
-	Texture pacPower;
-	Texture dark;
+	Texture pacGomme=TextureFactory.getInstance().getTexturePacGom();
+	Texture pacPower=TextureFactory.getInstance().getTexturePacPower();
+	Texture dark=TextureFactory.getInstance().getTextureDark();
 	Texture pacman = TextureFactory.getInstance().getTexturePacman();
 	
 	int openMaze[][] = {
@@ -44,13 +44,16 @@ public class Maze {
 			{0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0},
 			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	};
+
+	public Maze() {}
 	
-	public Maze(Texture Block, Texture PacGomme, Texture PacPower, Texture Dark) {
-		//block = Block;
+	/*public Maze(Texture Block, Texture PacGomme, Texture PacPower, Texture Dark, Texture pacman) {
+		block = Block;
 		pacGomme = PacGomme;
 		pacPower = PacPower;
 		dark = Dark;
-	}
+		this.pacman = pacman;
+	}*/
 
 	public void drawMaze(SpriteBatch batch){
 		//murs
