@@ -3,21 +3,22 @@ package com.gdx.game.view;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
-import com.gdx.game.model.GameElement;
+import com.gdx.game.model.*;
 
 import java.util.HashMap;
 
 public class TextureFactory
 {
-    private Texture pacman, bloc, pacGom, pacPower, dark;
+    private HashMap<Class<?>, Texture> _textures;
 
     private TextureFactory()
     {
-        pacman = new Texture(Gdx.files.internal("pacmanRight.png"));
-        bloc = new Texture(Gdx.files.internal("bloc.png"));
-        pacGom = new Texture(Gdx.files.internal("pellet.png"));
-        pacPower = new Texture(Gdx.files.internal("superpellet.png"));
-        dark = new Texture(Gdx.files.internal("dark.png"));
+        _textures = new HashMap<Class<?>, Texture>();
+        _textures.put(Pacman.class, new Texture(Gdx.files.internal("pacmanRight.png")));
+        _textures.put(Block.class, new Texture(Gdx.files.internal("bloc.png")));
+        _textures.put(Gom.class, new Texture(Gdx.files.internal("pellet.png")));
+        _textures.put(SuperGom.class, new Texture(Gdx.files.internal("superpellet.png")));
+        _textures.put(Dark.class, new Texture(Gdx.files.internal("dark.png")));
     }
 
     private static TextureFactory instance = null;
@@ -33,29 +34,9 @@ public class TextureFactory
             instance = new TextureFactory();
         return instance;
     }
-    public Texture getTexturePacman()
-    {
-        return pacman;
-    }
-    public Texture getTextureBloc()
-    {
-        return bloc;
-    }
-
-    public Texture getTexturePacGom() {
-        return pacGom;
-    }
-
-    public Texture getTexturePacPower() {
-        return pacPower;
-    }
-
-    public Texture getTextureDark() {
-        return dark;
-    }
 
     public Texture getTexture(Class<? extends GameElement> aClass) {
-        return null;
+        return _textures.get(aClass);
     }
 }
 

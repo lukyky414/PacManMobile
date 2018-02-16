@@ -3,13 +3,17 @@ package com.gdx.game.model;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.gdx.game.view.TextureFactory;
+import java.util.Iterator;
+
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 
 public class Maze {
-	Texture block=TextureFactory.getInstance().getTextureBloc();
-	Texture pacGomme=TextureFactory.getInstance().getTexturePacGom();
-	Texture pacPower=TextureFactory.getInstance().getTexturePacPower();
-	Texture dark=TextureFactory.getInstance().getTextureDark();
-	Texture pacman = TextureFactory.getInstance().getTexturePacman();
+	Texture block=TextureFactory.getInstance().getTexture(Block.class);
+	Texture pacGomme=TextureFactory.getInstance().getTexture(Gom.class);
+	Texture pacPower=TextureFactory.getInstance().getTexture(SuperGom.class);
+	Texture dark=TextureFactory.getInstance().getTexture(Dark.class);
+	Texture pacman = TextureFactory.getInstance().getTexture(Pacman.class);
 	
 	int openMaze[][] = {
 			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
