@@ -23,6 +23,6 @@ public class Block extends GameElement{
 
     @Override
     public Texture getTexture() {
-        return TextureFactory.getInstance().getTextureBloc();
+        return TextureFactory.getInstance().getTexture(this.getClass());
     }
 }

@@ -4,10 +4,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.gdx.game.view.TextureFactory;
 
-public class Pacman extends GameElement{
-    public static final float size=16;
+public class Dark extends GameElement{
+    public static final float size=48;
 
-    public Pacman(Vector2 position, World monde) {
+    public Dark(Vector2 position, World monde) {
         super(position, monde);
     }
 

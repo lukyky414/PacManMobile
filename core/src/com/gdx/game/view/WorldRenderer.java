@@ -28,6 +28,7 @@ public class WorldRenderer {
     public WorldRenderer(World monde)
     {
         this.monde = monde;
+        this.spriteBatch = new SpriteBatch();
     }
 
     public void render(float delta)
