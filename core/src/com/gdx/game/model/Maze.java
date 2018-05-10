@@ -1,5 +1,6 @@
 package com.gdx.game.model;
 
+//import com.gdx.game.exceptions.NoSuchElementException;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.gdx.game.view.TextureFactory;
@@ -7,14 +8,14 @@ import java.util.Iterator;
 
 public class Maze implements Iterable<GameElement> {
 	private World _world;
-	private final int _width;
-	private final int _height;
+	private /*final*/ int _width;
+	private /*final*/ int _height;
 
-	Texture block=TextureFactory.getInstance().getTextureBloc();
-	Texture pacGomme=TextureFactory.getInstance().getTexturePacGom();
-	Texture pacPower=TextureFactory.getInstance().getTexturePacPower();
-	Texture dark=TextureFactory.getInstance().getTextureDark();
-	Texture pacman = TextureFactory.getInstance().getTexturePacman();
+	private Texture block=TextureFactory.getInstance().getTexture(Block.class);
+	private Texture pacGomme=TextureFactory.getInstance().getTexture(Gom.class);
+	private Texture pacPower=TextureFactory.getInstance().getTexture(SuperGom.class);
+	private Texture dark=TextureFactory.getInstance().getTexture(Dark.class);
+	private Texture pacman = TextureFactory.getInstance().getTexture(Pacman.class);
 
 	/* 0 : mur, 1 : vide, 2 : intersection, 3 : barriere fantomes */
 	private int[][] _laby1 = new int[][] {
@@ -54,13 +55,12 @@ public class Maze implements Iterable<GameElement> {
 
 	public Maze() {}
 
-	public Maze(World w) {
+	Maze(World w) {
 		_world = w;
 		this.init();
 	}
 
-	private void init ()
-	{
+	private void init () {
 		this._height = _laby1.length;
 		this._width  = _laby1[0].length;
 		this._laby2 = new GameElement[this._height][this._width];
@@ -134,9 +134,9 @@ public class Maze implements Iterable<GameElement> {
 class MazeIterator implements Iterator<GameElement> {
 
 	private Maze _maze;
-	int _i, _j;
+	private int _i, _j;
 
-	public MazeIterator(Maze maze) {
+	MazeIterator(Maze maze) {
 		this._maze = maze;
 		_i = _j = -1;
 	}
@@ -148,7 +148,7 @@ class MazeIterator implements Iterator<GameElement> {
 
 	@Override
 	public GameElement next() {
-		if (!this.hasNext()) throw new NoSuchElementException("No more game elements");
+		//if (!this.hasNext()) throw new NoSuchElementException("No more game elements");
 		GameElement gameElement;
 		do {
 			gameElement = this._maze.get(_i, _j);
