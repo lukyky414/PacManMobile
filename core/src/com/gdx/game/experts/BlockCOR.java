@@ -3,21 +3,18 @@ package com.gdx.game.experts;
 import com.gdx.game.model.GameElement;
 import com.gdx.game.model.World;
 
-public class MazeCOR extends AbstractCOR {
-    private static MazeCOR instance = new MazeCOR();
+public class BlockCOR extends AbstractCOR {
+    private static BlockCOR instance = new BlockCOR();
 
     private AbstractCOR cor;
 
-    private MazeCOR(){
-        cor = new BlockCOR(
-                new PelletCOR(null)
-        );
+    private BlockCOR(){
+        cor = new PelletCOR(null);
     }
 
     public static AbstractCOR getCOR(){
         return instance.cor;
     }
-
 
     @Override
     public boolean canBuild(int elementType) {

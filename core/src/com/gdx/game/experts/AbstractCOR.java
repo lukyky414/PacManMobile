@@ -2,10 +2,10 @@ package com.gdx.game.experts;
 import com.gdx.game.model.GameElement;
 import com.gdx.game.model.World;
 
-public abstract class abstractCOR {
-    public abstractCOR next;
+public abstract class AbstractCOR {
+    public AbstractCOR next;
 
-    public abstractCOR(abstractCOR next){
+    public AbstractCOR(AbstractCOR next){
         this.next = next;
     }
 
