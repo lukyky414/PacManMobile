@@ -9,6 +9,10 @@ public abstract class AbstractCOR {
         this.next = next;
     }
 
+    public AbstractCOR() {
+        this.next = null;
+    }
+
     public abstract boolean canBuild(int elementType);
     public abstract GameElement construct(World world, int x, int y);
 

@@ -18,7 +18,6 @@ public class MazeCOR extends AbstractCOR {
         return instance.cor;
     }
 
-
     @Override
     public boolean canBuild(int elementType) {
         return false;

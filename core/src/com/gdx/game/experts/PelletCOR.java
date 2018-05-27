@@ -4,12 +4,9 @@ import com.gdx.game.model.GameElement;
 import com.gdx.game.model.World;
 
 public class PelletCOR extends AbstractCOR {
-    private static PelletCOR instance = new PelletCOR();
 
-    private AbstractCOR cor;
-
-    public static AbstractCOR getCOR(){
-        return instance.cor;
+    public PelletCOR(AbstractCOR next) {
+        super(next);
     }
 
     @Override
