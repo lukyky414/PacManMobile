@@ -68,7 +68,7 @@ public class Maze implements Iterable<GameElement> {
 		int x = 0,y = 0;
 		for(int[] t : _laby1) {
 			for(int elementType : t) {
-				GameElement element = MazeCOR.getCOR ().build (
+				GameElement element = MazeCOR.getCOR().build(
 						this._world,
 						elementType,
 						x,
@@ -85,6 +85,7 @@ public class Maze implements Iterable<GameElement> {
 	public int getHeight() { return _height; }
 
 	public int getWidth()  { return _width; }
+
 	/*public Maze(Texture Block, Texture PacGomme, Texture PacPower, Texture Dark, Texture pacman) {
 		block = Block;
 		pacGomme = PacGomme;
