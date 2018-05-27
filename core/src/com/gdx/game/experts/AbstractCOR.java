@@ -3,6 +3,9 @@ import com.gdx.game.model.GameElement;
 import com.gdx.game.model.World;
 
 public abstract class AbstractCOR {
+    protected final int _BLOCK = 0;
+    protected final int _VIDE = 1;
+
     public AbstractCOR next;
 
     public AbstractCOR(AbstractCOR next){

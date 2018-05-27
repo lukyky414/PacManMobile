@@ -20,11 +20,12 @@ public class MazeCOR extends AbstractCOR {
 
     @Override
     public boolean canBuild(int elementType) {
-        return false;
+        // TODO : Vérifier si c'est la bonne façon de faire
+        return next.canBuild(elementType);
     }
 
     @Override
     public GameElement construct(World world, int x, int y) {
-        return null;
+        return next.construct(world, x, y);
     }
 }
