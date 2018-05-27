@@ -7,12 +7,10 @@ import com.gdx.game.model.*;
 
 import java.util.HashMap;
 
-public class TextureFactory
-{
+public class TextureFactory {
     private HashMap<Class<?>, Texture> _textures;
 
-    private TextureFactory()
-    {
+    private TextureFactory() {
         _textures = new HashMap<Class<?>, Texture>();
         _textures.put(Pacman.class, new Texture(Gdx.files.internal("pacmanRight.png")));
         _textures.put(Block.class, new Texture(Gdx.files.internal("bloc.png")));
@@ -23,14 +21,12 @@ public class TextureFactory
 
     private static TextureFactory instance = null;
 
-    static public void reset()
-    {
+    static public void reset() {
         instance = null;
     }
 
-    public static TextureFactory getInstance()
-    {
-        if(instance == null)
+    public static TextureFactory getInstance() {
+        if (instance == null)
             instance = new TextureFactory();
         return instance;
     }
@@ -39,5 +35,4 @@ public class TextureFactory
         return _textures.get(aClass);
     }
 }
-
 
