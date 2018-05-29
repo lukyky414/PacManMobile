@@ -13,7 +13,7 @@ public class PacManGdx extends ApplicationAdapter {
 	Texture pacGomme;
 	Texture pacPower;
 	Texture dark;
-	Maze wut;
+	Maze laby;
 	
 	@Override
 	public void create () {
@@ -22,15 +22,15 @@ public class PacManGdx extends ApplicationAdapter {
 		pacGomme = new Texture("pellet.png");
 		pacPower = new Texture("superpellet.png");
 		dark = new Texture("dark.png");
-		//wut = new Maze(block, pacGomme, pacPower, dark);
-		wut = new Maze();
+		//laby = new Maze(block, pacGomme, pacPower, dark);
+		laby = new Maze();
 	}
 
 	@Override
 	public void render () {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		wut.drawMaze(batch);
+		laby.drawMaze(batch);
 	}
 	
 	@Override

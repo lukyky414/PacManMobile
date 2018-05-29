@@ -1,22 +1,27 @@
 package com.gdx.game.model;
 
-//import com.gdx.game.exceptions.NoSuchElementException;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.gdx.game.experts.MazeCOR;
 import com.gdx.game.view.TextureFactory;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class Maze implements Iterable<GameElement> {
 	private World _world;
 	private /*final*/ int _width;
 	private /*final*/ int _height;
 
-	private Texture block=TextureFactory.getInstance().getTexture(Block.class);
-	private Texture pacGomme=TextureFactory.getInstance().getTexture(Gom.class);
-	private Texture pacPower=TextureFactory.getInstance().getTexture(SuperGom.class);
-	private Texture dark=TextureFactory.getInstance().getTexture(Dark.class);
-	private Texture pacman = TextureFactory.getInstance().getTexture(Pacman.class);
+	private Texture listText[] = {
+			TextureFactory.getInstance().getTexture(Block.class),
+			TextureFactory.getInstance().getTexture(Gom.class),
+			TextureFactory.getInstance().getTexture(SuperGom.class),
+			TextureFactory.getInstance().getTexture(Dark.class),
+			TextureFactory.getInstance().getTexture(Pacman.class)
+	};
+
+	private final int _textWidth = 16;
+	private final int _textHeight = 16;
 
 	/* 0 : mur, 1 : vide, 2 : intersection, 3 : barriere fantomes */
 	private int[][] _laby1 = new int[][] {
@@ -54,7 +59,10 @@ public class Maze implements Iterable<GameElement> {
 	};
 	private GameElement[][] _laby2;
 
-	public Maze() {}
+	public Maze() {
+		this._world = new World();
+		this.init();
+	}
 
 	Maze(World w) {
 		_world = w;
@@ -87,43 +95,45 @@ public class Maze implements Iterable<GameElement> {
 
 	public int getWidth()  { return _width; }
 
-	/*public Maze(Texture Block, Texture PacGomme, Texture PacPower, Texture Dark, Texture pacman) {
-		block = Block;
-		pacGomme = PacGomme;
-		pacPower = PacPower;
-		dark = Dark;
-		this.pacman = pacman;
-	}*/
-
-	public void drawMaze(SpriteBatch batch){
-		//murs
-		drawResize(batch, block, 0);
-		draw(batch, dark, 1);
-		draw(batch, pacGomme, 2);
-		draw(batch, pacPower, 3);
-		draw(batch, pacman, 4);
-
+	public void drawMaze(SpriteBatch batch) {
+		for (Texture text : listText) {
+			if ((text.getWidth() != _textWidth) || (text.getHeight() != _textHeight))
+				drawResize(batch, text);
+			else draw(batch, text);
+		}
 	}
 
-	private void draw(SpriteBatch batch, Texture text, int what) {
+	private void draw(SpriteBatch batch, Texture text) {
 		batch.begin();
-		for(int i = 0; i < 28; i ++) {
-			for(int j = 0; j < 31; j++) {
-				if(_laby1[j][i] == what)
-					batch.draw(text, i * 16, (30-j) * 16);
-			}
-		}
+		for (int i = 0; i < 28; i++)
+			for (int j = 0; j < 31; j++)
+				if (this._laby2[j][i].getTexture() == text)
+					batch.draw(
+							text,
+							i * 16,
+							(30 - j) * 16
+					);
 		batch.end();
 	}
 
-	private void drawResize(SpriteBatch batch, Texture text, int what) {
+	private void drawResize(SpriteBatch batch, Texture text) {
 		batch.begin();
-		for(int i = 0; i < 28; i ++) {
-			for(int j = 0; j < 31; j++) {
-				if(_laby1[j][i] == what)
-					batch.draw(text, i * 16, (30-j) * 16, 16, 16, 0, 0, 48, 48, false, false);
-			}
-		}
+		for (int i = 0; i < 28; i++)
+			for (int j = 0; j < 31; j++)
+				if (this._laby2[j][i].getTexture() == text)
+				batch.draw(
+						text,
+						i * 16,
+						(30 - j) * 16,
+						_textWidth,
+						_textHeight,
+						0,
+						0,
+						text.getWidth(),
+						text.getHeight(),
+						false,
+						false
+				);
 		batch.end();
 	}
 
@@ -150,7 +160,7 @@ class MazeIterator implements Iterator<GameElement> {
 
 	@Override
 	public GameElement next() {
-		//if (!this.hasNext()) throw new NoSuchElementException("No more game elements");
+		if (!this.hasNext()) throw new NoSuchElementException("No more game elements");
 		GameElement gameElement;
 		do {
 			gameElement = this._maze.get(_i, _j);

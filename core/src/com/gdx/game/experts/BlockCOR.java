@@ -13,6 +13,7 @@ public class BlockCOR extends AbstractCOR {
 
     @Override
     public boolean canBuild(int elementType) {
+
         return (elementType == this._BLOCK);
     }
 
